@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         showRecylerList()
     }
 
+    // Memasukkan data ke data class Hero
     private fun getListHeroes(): ArrayList<Hero>{
         val dataName = resources.getStringArray(R.array.data_name)
         val dataDescripton = resources.getStringArray(R.array.data_description)
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         return listHero
     }
 
+    // Memasukkan ke Adapter
     private fun showRecylerList(){
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapeter = ListHeroAdapeter(list)

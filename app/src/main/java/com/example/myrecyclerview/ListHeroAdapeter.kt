@@ -20,13 +20,17 @@ class ListHeroAdapeter(private val listHero: ArrayList<Hero>): RecyclerView.Adap
         val tvItemDescription: TextView = itemView.findViewById(R.id.tvItemDescription)
     }
 
+    // Menampung Data
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+
+        // Menghubungan ViewHolder dengan view
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_hero, parent, false)
         return ListViewHolder(view)
     }
 
     override fun getItemCount(): Int = listHero.size
 
+    // Menyimpan Data
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, description, photo) = listHero[position]
         holder.imgPhoto.setImageResource(photo)
