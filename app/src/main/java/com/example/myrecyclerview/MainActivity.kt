@@ -3,8 +3,11 @@ package com.example.myrecyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.ProxyFileDescriptorCallback
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -51,5 +54,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun selectedHeroes(hero: Hero){
         Toast.makeText(this, "Kamu Memilih ${hero.name}", Toast.LENGTH_LONG).show()
+    }
+
+    // Membuat Grid Layout
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_list -> {
+                rvHeroes.layoutManager = LinearLayoutManager(this)
+            }
+            R.id.action_grid -> {
+                rvHeroes.layoutManager = GridLayoutManager(this, 2)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
